@@ -189,4 +189,27 @@ To solve this, there are many method pesented. In Wikipedia, there are three typ
 
 More detail about "Triangulation" will be explained in its part (Triangulation directory)
 
+---
 
+### 6. Bundle Adjustment 📂
+
+![image](https://user-images.githubusercontent.com/60316325/231939338-7460eec9-fad4-406f-9aef-5216a9e68755.png)
+
+![image](https://user-images.githubusercontent.com/60316325/231939360-4e8dad2d-0d1f-44a8-98e1-cb5b56303ca0.png)
+
+Bundle Adjustment is to optimize the relative 3D motion between the camera frame and the 3D point loaction that can be estimated <br>
+based on the locations of keypoints that exist in multiple frames.
+
+From Triangulation, we can get 3D coordinate position. $P_1^'$, $P_2^'$, $P_3^'$ are coordinate position that reprojected 3D point <br>
+(after Triangulation) to 2D image plane. so this is not the original coordinate.
+
+The overall flow is as below..
+
+1. Input image and Extract(Detect) Feature Points.
+2. From the Feature Points, we can estimate Camera pose. ($R$ matrix and $t$ vector)
+3. Determine 3D point position using Triangulation.
+4. Correct Camera pose and 3D Point using Bundle Adjustment, Output = Corrected Camera pose and 3D Point position
+
+Usually, use Outlier Filtering method (e.g RANSAC) and Bundle Adjustment together to reduce reprojection error.
+
+---
