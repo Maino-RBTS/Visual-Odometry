@@ -107,12 +107,10 @@ y \\
 \end{pmatrix}$$
 
 * **1. Direct Linear Transformation (DLT)**
-  * Two 3D Vectors $\mathbf{x}\_i^{\prime}$ and $\mathbf{H}\mathbf{x}\_i$ are not equal because this is an equation involving homogeneous vectors.
-  * The have the same direction but may differ in magnitude by a non-zero scale factor.
-  * Thus, it may be expressed in terms of the vector cross product as ..
-  * $\mathbf{x}\_i^{\prime} \times \mathbf{H}\mathbf{x}\_i = 0$
-  * $\mathbf{a} \times \mathbf{b} = \lVert \mathbf{a} \rVert \ \lVert \mathbf{b} \rVert sin(\theta) \mathbf{n}$ <br>
-  $\mathbf{n}$ : unit vector perpendicular(수직) to the plane containing $\mathbf{a}$ and $\mathbf{b}$ <br>
-  $\theta$ : angle between $\mathbf{a}$ and $\mathbf{b}$
-  
-  $$ 
+  * Find 3x3 Homography($\mathbf{H}$) using 4 correspond points in two images.
+  * Given $n\ge 4$ 2D to 2D Point correspondences { $\mathbf{x}_i \leftrightarrow \mathbf{x}_i^{\prime}$ }, determine the $\mathbf{H}$ such that $\mathbf{x}_i^{\prime} = \mathbf{H}\mathbf{x}_i$.
+  * Algorithm <br>
+    -1. For each correspondence $\mathbf{x}_i \leftrightarrow \mathbf{x}_i^{\prime}$, compute $A_i$. Usually only two first rows needed.<br>
+    -2. Assemble $n$ 2x9 matrices $A_i$ into a single 2$n$x9 matrix A.<br>
+    -3. Obtain SVD of A. Solution for $\mathbf{h}$ is last column of V.<br>
+    -4. Determine H from $\mathbf{h}$
