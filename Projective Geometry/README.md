@@ -114,3 +114,21 @@ y \\
     -2. Assemble $n$ 2x9 matrices $A_i$ into a single 2$n$x9 matrix A.<br>
     -3. Obtain SVD of A. Solution for $\mathbf{h}$ is last column of V.<br>
     -4. Determine H from $\mathbf{h}$
+
+* **2. Normalized Direct Linear Transformation**
+  * Find 3x3 Homography($\mathbf{H}$) using 4 correspond points in two images.
+  * Given $n\ge 4$ 2D to 2D Point correspondences { $\mathbf{x}_i \leftrightarrow \mathbf{x}_i^{\prime}$ }, determine the $\mathbf{H}$ such that $\mathbf{x}_i^{\prime} = \mathbf{H}\mathbf{x}_i$.
+  * Algorithm <br>
+    -1. Normalize points. $\tilde{\mathbf{x}\_i} = T_{norm} \mathbf{x}\_i \quad \tilde{\mathbf{x}\_i}^{\prime} = T_{norm}^{\prime} \mathbf{x}\_i^{\prime}$ <br>
+    -2. Apply DLT algorithm to $\tilde{\mathbf{x}\_i} \leftrightarrow \tilde{\mathbf{x}\_i}^{\prime}$.<br>
+    -3. Denormalize solution.<br>
+    
+$$H = T_{norm}^{\prime \ -1}\tilde{H}T_{norm}, \qquad \mathbf{x}\_i^{\prime} = T_{norm}^{\prime \ -1}\tilde{H}T_{norm}\mathbf{x}\_i$$
+    
+* **3. Iterative Estimation**
+  * Given $n\ge 4$ 2D to 2D point correspondences { $\mathbf{x}\_i \leftrightarrow \mathbf{x}\_i^{\prime}$ }, determine the $H$ <br>
+    (this also implies computing optimal $\mathbf{x}\_i^{\prime} = H\mathbf{x}\_i$)
+
+  * Algorithm <br>
+    -1. Initialization : Compute an initial estimate using normalized DLT or RANSAC.<br>
+    -2. Geometric minimization : Minimize the geometric error using "Levenberg-Marquardt" over 9 entries of H.<br>
