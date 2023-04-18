@@ -107,3 +107,7 @@ $$\tilde{\mathbf{C}} = -M^{-1}\mathbf{p}\_4 \quad \rightarrow \quad C = \begin{p
 $$
 
 * Since $M = KR$, $KR$ can be found by decomposing M using "QR Decomposition".
+
+--- 
+
+**Additional Writing Required..**
