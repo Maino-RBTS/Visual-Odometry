@@ -200,7 +200,7 @@ More detail about "Triangulation" will be explained in its part (Triangulation d
 Bundle Adjustment is to optimize the relative 3D motion between the camera frame and the 3D point loaction that can be estimated <br>
 based on the locations of keypoints that exist in multiple frames.
 
-From Triangulation, we can get 3D coordinate position. $P_1^'$, $P_2^'$, $P_3^'$ are coordinate position that reprojected 3D point <br>
+From Triangulation, we can get 3D coordinate position. $P_1^{\prime}$, $P_2^{\prime}$, $P_3^{\prime}$ are coordinate position that reprojected 3D point <br>
 (after Triangulation) to 2D image plane. so this is not the original coordinate.
 
 The overall flow is as below..
