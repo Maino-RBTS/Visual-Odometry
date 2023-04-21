@@ -231,9 +231,9 @@ $$P = [I|\mathbf{0}], \qquad P^{\prime} = [R|\mathbf{t}]$$
  (즉, 이러한 normalized camera에 대응되는 F matrix를 Essential Matrix 라고 한다.)
 - The essential matrix has the form of..
 
-$$E = [\mathbf{t}]_{\times}R = R[R^T\mathbf{t}]_{\times}$$
+$$E = [\mathbf{t}]\_{\times}R = R[R^T\mathbf{t}]_{\times}$$
 
-$$F = K^{\prime \ -T}[\mathbf{t}]_{\times}RK^{-1} = K^{\prime \ -T}R[R^T\mathbf{t}]_{\times}K^{-1}$$
+$$F = K^{\prime \ -T}[\mathbf{t}]\_{\times}RK^{-1} = K^{\prime \ -T}R[R^T\mathbf{t}]\_{\times}K^{-1}$$
 
 - The defining equation for the essential matrix is.. (in terms of the normalized image coordinates for corresponding points $\mathbf{x} \leftrightarrow \mathbf{x}^{\prime}$)
 - If we compare to $E$ and $F$, we can find that the $E$ matrix can be calculated from the $F$ matrix and the known calibration matrix as..
@@ -268,11 +268,11 @@ $$W = \begin{bmatrix}
 -1&0&0\\
 0&0&0\end{bmatrix}$$
 
-* Since $S\mathbf{t} = 0$ and $S = [\mathbf{t}]_{\times}$, it follows that $\mathbf{t} = U(0,0,1)^T = \mathbf(u)_3$, the last column of $U$.
+* Since $S\mathbf{t} = 0$ and $S = [\mathbf{t}]\_{\times}$, it follows that $\mathbf{t} = U(0,0,1)^T = \mathbf{u}\_3$, the last column of $U$.
 * Note that $\mathbf{t}$ is determined up to scale and the sign of $\mathbf{t}$ cannot be determined.
 * Thus, if $P = [I|\mathbf{0}]$, there are four possible choices of $P^{\prime}$ based on the two possible choices of $R$ and two possible signs of $\mathbf{t}$.
 
-$$P^{\prime} = [UWV^T | +\mathbf{u}_3] \ or [UWV^T | -\mathbf{u}_3] \ or [UW^TV^T | +\mathbf{u}_3] \ or [UW^TV^T | -\mathbf{u}_3]$$
+$$P^{\prime} = [UWV^T | +\mathbf{u}\_3] \ or [UWV^T | -\mathbf{u}\_3] \ or [UW^TV^T | +\mathbf{u}\_3] \ or [UW^TV^T | -\mathbf{u}\_3]$$
 
 ![image](https://user-images.githubusercontent.com/60316325/232998535-8b25f5de-f51e-448f-91e8-c8838a6eef30.png)
 
