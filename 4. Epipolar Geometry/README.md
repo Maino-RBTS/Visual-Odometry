@@ -263,7 +263,7 @@ $$S = UZU^T, \quad R = UWV^T \ or \ UW^TV^T$$
 $$W = \begin{bmatrix}
 0&-1&0\\
 1&0&0\\
-0&0&1\end{bmatrix}, \qquad \begin{bmatrix}
+0&0&1\end{bmatrix}, \qquad Z = \begin{bmatrix}
 0&1&0\\
 -1&0&0\\
 0&0&0\end{bmatrix}$$
