@@ -67,3 +67,72 @@ $$\mathbf{x} = K[I\ |0]\mathbf{X}_{cam}, \qquad K = \begin{bmatrix}
 f&0&p_x\\
 0&f&p_y\\
 0&0&1 \end{bmatrix}$$
+
+### Camera rotation and Translation
+
+- In general, points in space will be expressed in terms of a different Euclidean coordinate frame, known as the *"world coordinate frame"*.
+- The two coordinate frames are related via a rotation $R$ and a translation $t$.
+
+![image](https://user-images.githubusercontent.com/60316325/233523184-cee9ab59-6726-444b-a966-1ead358f9c66.png)
+
+- tilde symbol means **inhomogeneous coordinate**
+  - $\tilde{\mathbf{X}}$ represents a 3D point in the world coordinate frame. 
+  - $\tilde{\mathbf{C}}$ represents the coordinates of the camera. (w.r.t World coordinate frame)
+  - $\tilde{\mathbf{X}}\_{cam}$ represents the same point in the camera coordinate frame. (w.r.t World coordinate frame)
+  - $R$ is 3x3 rotation matrix representing the orientation of the camera coordinate frame. (world to camera)
+ 
+$$\tilde{\mathbf{X}}\_{cam} = R(\tilde{\mathbf{X}} - \tilde{\mathbf{C}}) = R\tilde{\mathbf{X}} - R\tilde{\mathbf{C}}$$
+
+![image](https://user-images.githubusercontent.com/60316325/233537622-30fc27a3-f012-4069-8233-f352b35dfd8e.png)
+
+- This equation may be written in homogeneous coordinates as...
+  - $\mathbf{X}\_{cam}$ and $\mathbf{X}$ are all in **homogeneous coordinate system**.
+  - $\mathbf{X}$ represents a 3D point in the world coordinate frame.
+  - $\mathbf{X}\_{cam}$ represents the same point but w.r.t camera coordinate frame.
+- So we can express eqution like below.
+
+![image](https://user-images.githubusercontent.com/60316325/233539092-a758e647-c98f-4207-a080-bda1d97c22c9.png)
+
+![image](https://user-images.githubusercontent.com/60316325/233541511-927a8a5d-4456-49de-9cee-04b00f6a7a81.png)
+
+## CCD cameras.
+
+- The general form of the calibration matrix of CCD camera is as follows:
+
+![image](https://user-images.githubusercontent.com/60316325/233542519-8ab04af3-81de-4cfd-aa98-b4a3272ee9e9.png)
+
+- $\alpha_x = fm_x$ and $\alpha_y = fm_y$ represent the **focal length of the camera in terms of pixel dimensions** in the x and y direction, respectively.
+- $(x_0, y_0)$ is the **principal point in terms of pixel dimensions** with coordinates $\alpha_x = fm_x$ and $\alpha_y = fm_y$.
+
+- Sometimes, the skew parameter (s) is added to the calibration matrix like below.
+
+![image](https://user-images.githubusercontent.com/60316325/233543095-dfa4c394-6ad6-4e68-8dd8-2e45c7c68371.png)
+
+- The skew parameter will be zero for most normal cameras.
+- However, in certain unusual instances, it can take non-zero values.
+- If $s\neq 0$, then this can be interpreted as a skewing of the pixel elements in the CCD array so that the x- and y-axes are not perpendicular(수직).
+
+## Camera matrix Decomposition.
+
+- A general projective camera may be decomposed into blocks according to $P = [M\ |\mathbf{p}\_4]$, (M : 3x3, $\mathbf{p}\_4$ : 3x1 ).
+
+![image](https://user-images.githubusercontent.com/60316325/233544999-d5f067d7-37a3-4426-b263-46c6c8c75524.png)
+
+- If P is given, the camera center can be calculated as follows :
+
+![image](https://user-images.githubusercontent.com/60316325/233546010-f7e7781e-526a-4b27-aab6-09c488c8be5f.png)
+
+- Since M=KR, KR can be found by decomposing M using QR decomposition.
+
+![image](https://user-images.githubusercontent.com/60316325/233546173-5c02d995-84bf-4b5b-80f1-cf43ab269b2c.png)
+
+- Decompose $M^{-1}$ using QR decomposition and calculate its inverse, then K and R can be found.
+
+## Field of View (FOV)
+
+- The field of view is that part of the world that is visible through the camera at a particular position and orientation in space
+- Object outside of FOV are not recorded in the image.
+- Given K and image size (W,H), FOV can be calculated as..
+
+![image](https://user-images.githubusercontent.com/60316325/233549453-002f2a54-de20-480e-9a8d-789d18acccf4.png)
+
