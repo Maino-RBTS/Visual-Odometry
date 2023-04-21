@@ -134,7 +134,7 @@ $$ G = \begin{bmatrix}
 * (b) The epipolar geometry for $\mathbf{x}$, $\mathbf{x}^{\prime}$ do not satisfy the epipolar constraint.
 
 * The Linear Triangulation method is the direct analogue of the DLT method.
-* In each image, we have a measurement $\mathbf{x} = P\mathbf{X}$ and $\mathbf{x}^{\prime} = P^{\prime}\mathbf{X}.
+* In each image, we have a measurement $\mathbf{x} = P\mathbf{X}$ and $\mathbf{x}^{\prime} = P^{\prime}\mathbf{X}$.
 * These equations can be combined into a form $A\mathbf{X} = 0$, which is an equation linear in $\mathbf{X}$.
 
 * For the first image, $\mathbf{x} \times (P\mathbf{X}) = 0$ and writing this out gives. ..
